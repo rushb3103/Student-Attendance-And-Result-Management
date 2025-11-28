@@ -1,0 +1,86 @@
+{% extends 'base-teacher.html' %}
+{% block title %} View Attendance {% endblock %}
+{% block body %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">View Attendance</h1>
+    </div>
+
+    <!-- Content Row -->
+    <!-- Page Heading -->
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Students</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div id="dataTable_filter" class="dataTables_filter">
+                                    <label class="d-flex flex-row p-3">Search:<input type="search" name="data"
+                                            class="form-control form-control-sm mx-3" placeholder=""
+                                            aria-controls="dataTable">
+                                        <input type="submit" value="Search" name="search"></label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable no-footer" id="dataTable" width="100%"
+                                cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable"
+                                            rowspan="1" colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 142px;">
+                                            Id</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Email: activate to sort column ascending"
+                                            style="width: 135px;">Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Update: activate to sort column ascending"
+                                            style="width: 166px;">View</th>
+    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in stu %}
+                                    <tr>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <td>{{ item.id }}</td>
+                                            <td><input type="hidden" name="item_id" value="{{item.id}}">
+                                                {{ item.s_name }}</td>
+                                            <td><button type="submit" name="view" >View</button></td>
+                                        </form>
+                                    </tr>
+                                    {% empty %}
+                                    <tr class="odd">
+                                        <td colspan="6" class="dataTables_empty">No
+                                            data available in table</td>
+                                    </tr>
+
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+{% endblock %}

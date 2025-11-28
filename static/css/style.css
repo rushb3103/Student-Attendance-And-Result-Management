@@ -1,0 +1,637 @@
+ /* css Reset */
+ *{    
+     margin: 0px;
+     padding: 0px;
+     box-sizing: border-box;
+     /* display: block; */ 
+}
+header{
+    height: auto;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+}
+/* Navigation menu */
+#navbar{
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: space-around;
+    background-color: white;
+    border: #48444abf 2px solid;
+    overflow: hidden;
+}
+.col{
+    position: static !important;
+}
+/* Logo */
+#navbar #logo img{
+    display: block;
+    height: 60px;
+    width: 90px;
+    object-fit: cover;
+}
+#logo{
+    display: inline-block;
+    margin:auto;
+}
+/* menu Icon */
+.menubtn{
+    width: 60%;
+}
+.icon {
+    margin-left: 70%;
+    margin-right: 5%;
+    padding: 16px 0px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+  
+  .change .bar2 {opacity: 0;}
+  
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+/* Navigation button */
+
+
+#links li{
+    list-style: none;
+   
+}
+#links{
+    display: none;
+    position: absolute;
+    right: 8%;
+}
+.smooth_link{
+    display: block!important;
+    animation: fade-block 0.9s ease-out forwards;
+}
+
+@keyframes fade-block {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+} 
+#links li a{
+    text-decoration: none;
+    background-color: royalblue;
+    color: salmon;
+    display: flex;
+    flex-direction: column;
+    text-shadow: sandybrown 0.5px 0.5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2em;
+    height: 60px;
+    width: 8em;
+    padding: 5px 5px;
+    text-align: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+#links li a:hover{
+    background-color: rgba(255, 255, 255, 0.411);
+    color: tomato;
+    border: 1px dotted turquoise;
+}
+#links li a:active{
+    text-decoration: underline;
+}
+/* Slides */
+#slide{
+    background: url(../img/slide1.jpg) no-repeat center center/cover;
+    display: inline-block;
+    padding-top: 100px;
+    height: 600px;
+    width:100%;
+    text-align: center;
+  
+}
+#slide h2{
+    margin-top: 200px;
+    font-size: 0.1em;
+    animation: zoom 1.8s ease-in-out forwards;
+    animation-delay: 0.7s;
+    font-family: 'Titillium Web', sans-serif;   
+    display: inline-block;
+    color:whitesmoke;
+    
+}
+@keyframes zoom {
+    from {
+        font-size: 0.1em;
+    }
+    to {
+        font-size: 3em;
+    }
+
+}
+/* Registration form */
+.pop-font{
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+.form{
+    padding: 3em 0em;
+    display: flex;
+    /* border: 1px solid rgba(255, 136, 0, 0.89); */
+    text-align: center;
+    justify-content: center;
+}
+.form-container{
+    margin: auto;
+    margin: 9em 5%;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.2);
+    width: 90%;
+    justify-content: center;
+    height: auto;
+}
+#Regimage{
+    background: url(../img/slide1.jpg) no-repeat center center/cover;
+    width:50%;
+}
+#Regform{
+    display:flex;
+    flex-direction: column;
+}
+
+.big-font{
+    font-size: 2.6em;
+    display: inline-block;
+    text-shadow: -2px 0 black,0 2px black,2px 0 black,0 -2px black;
+    color:lightcoral;
+}
+
+.medium-form{
+    height: auto;
+    padding: 0.4em 0.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width:40%
+}
+.stu,.teach{
+    display: none;
+}
+.medium-form input,.medium-form select,.medium-form textarea{
+    font-size: 1em;
+    background-color: rgba(129, 170, 231, 0.473);
+    border-radius: 0.5em;
+    width: 92%;
+    height: auto;
+    margin: 0.4em 0.2em;
+    padding: 0.5em 0.6em;
+    text-align: center;
+}
+.medium-form div{
+    width: 100%;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+}
+.medium-btn{
+    background-color:rgba(7, 112, 21, 0.849);
+    font-size: 1;
+    border-radius: 5em;
+    width: 50%;
+    color: white;
+    height: auto;
+    padding: 0.4em 0.2em;
+    margin: 0.3em;
+}
+.alert-error{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: aliceblue;
+    position:absolute;
+    width: 45%;
+    height: auto;
+    margin: auto;
+    padding: 2em 0em;
+    border: 2px solid gray;
+    z-index: 3;
+    top: 5em;
+    left: 30%;
+}
+
+
+/* contct us form */
+.contactform{
+    padding-top: 6em;
+    display: flex;
+    margin: 5em 0em;
+    
+    /* border: 5px solid black; */
+    text-align: center;
+    justify-content: center;
+    
+}
+.contactform div h2{
+    font-size: 35px;
+    font-weight: bold;
+}
+#contactimage{
+    width: 45%;
+    height: auto;
+}
+#contactform{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 25px;
+    width: 40%;
+
+    /* margin-left: 5em; */
+  
+    border: 1px solid rgb(124, 121, 121);
+    text-align: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+#contactform div,#contactform input,#contactform textarea{
+   
+    margin: 3px 1%;
+    padding: 4px 5px;
+    font-size: 1em;
+    height: 33px;
+    width:80%;
+}
+#contactform input[type=submit]{
+    text-align: center;
+    background-color: rgb(240, 252, 130);
+}
+.msgtx{
+    font-size: 1em;
+    height: 100px !important;
+}
+/* panel */
+.panel{
+    
+    width: 10%;
+    background-color: skyblue;
+    display: flex;
+}
+.sidepanel{
+    display: block;
+    left: 0px;
+    width: 10%;
+    padding: 3rem 0.5rem;
+    height: auto;
+    position : fixed;
+}
+.panel,#panelprofile{
+    left: 0px;
+    justify-content: left;
+}
+.panel{
+    display: flex;
+    flex-direction: column;
+}
+#frame{
+    height:600px;
+    width: 100%;
+    float : left;
+}
+
+/* Create paper */
+.container{
+    padding-top: 9rem;
+    
+}
+.row{
+     width:100%; 
+     border: 1px solid black;
+     border-radius: 3px;
+     margin : 1em 0em;
+     padding : 0.8em 0.7em;
+     justify-content: center;
+}
+.red{
+    /* border: 1px solid black; */
+    padding-left: 0em;
+    display: flex;
+    flex-direction: column;
+
+}
+.nodisplay{
+    display: none !important;
+}
+.collapse{
+    visibility: collapse;
+}
+.visible{
+    display:flex;
+    flex-direction: row;
+    background-color: rgba(253, 137, 4, 0.438);
+}
+.red input[type="text"]{
+    margin-top: 0.8em;
+    padding: 0.4em;   
+}
+.red label,.red textarea,.red input{
+    width: 85%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+}
+
+.red label{
+    margin-top: 0.3em;
+    margin-left: 0.8em;
+}
+
+.btn{
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+}
+.btn input{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1em;
+    background-color: rgba(253, 4, 58, 0.322);
+    margin : 0.6em 0.7em;
+    border: 2px solid gray;
+    border-radius: 0.7em;
+    height: 2.4em;
+    width: 30%;
+}
+/* Login */
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+    font-size: 2.2rem;
+}
+.no-border{
+    border: none;
+}
+/* .col-lg-5{
+    width: 40%;
+} */
+.login-img{
+    background: url(../img/login.jpg);
+
+    background-size: cover;
+    padding: 0em 1em;
+    margin : 0.5em 0.7em;
+    height: 500px;
+    width: 40%;
+}
+.big-size{
+    font-size: 5.5em;
+}
+.bottom-margin{
+    margin-bottom: 0.5em;
+}
+.login-check{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.login-check input{
+    display:inline-block;
+    width: 1.4em;
+    height: 1.4em;
+}
+.login-check label{
+    font-size: 1em;
+    margin: auto 0.6em;
+}
+
+/* footer */
+footer{
+    bottom: 0px;
+    background-color: rgb(24, 54, 71);
+    padding: 15px 5%;
+    display: flex;
+    flex-direction: column;
+    color:white;
+    height: 80px;
+    width:100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.8em;
+}
+footer div p{
+    padding: 2px 5px;
+    display: inline-block;
+}
+footer p{
+    padding: 2px 5px;
+}
+footer a img{
+    display: inline-block;
+    margin: 0px 2px;
+    height: 15px;
+    width: 15px;
+
+}
+/* media Query */
+
+@media only screen and (max-width:675px) {
+    .row{
+        flex-direction: column;
+        width: 100%;
+    }
+    
+}
+@media only screen  and (max-width:700px){
+    #Regimage,.login-img{
+        display: none;
+    }
+    .medium-form{
+        width: 80%;
+    }
+}
+@media only screen and (min-width:675px) and (max-width:750px){
+    #logo,#navbar{
+        display: inline-block;
+    }
+    #logo{
+        position: relative;
+        top:0px;
+        left:10px;
+        margin: 2px 15px;
+    }
+    #links{ 
+        align-items: center;
+        align-content: flex-start;
+        display: flex!important;
+        flex-direction: row;
+        z-index: 2;
+        width: 45%;
+        position: absolute;
+        top: 0.9em;
+        right: 22%;
+    } 
+    .icon{
+        display: none;
+    }
+    #links li a{
+        text-decoration: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.8em;
+        height: 30px;
+        width: 75px;
+        padding: 3px 3px;
+        margin: 3px 7px;
+        text-align: center;
+        justify-content: center;
+        color: whitesmoke;
+        background-color: turquoise;
+        text-shadow:black 0.6px 0.7px;
+        border-radius: 9px;
+        box-shadow: black 0.6px 0.7px ;
+        transition: 0.7s;
+    }
+
+}
+@media only screen and (min-width:750px) and (max-width:950px){
+    #logo,#navbar{
+        display: inline-block;
+    }
+    #logo{
+        position: relative;
+        top:0px;
+        left:10px;
+        margin: 2px 15px;
+    }
+    #links{ 
+        align-items: center;
+        align-content: flex-start;
+        display: flex!important;
+        flex-direction: row;
+        z-index: 2;
+        width: 50%;
+        position: absolute;
+        top: 0.9em;
+        right: 22%;
+    } 
+    .icon{
+        display: none;
+    }
+    #links li a{
+        text-decoration: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1em;
+        height: 30px;
+        width: 90px;
+        padding: 3px 3px;
+        margin: 3px 10px;
+        text-align: center;
+        justify-content: center;
+        color: whitesmoke;
+        background-color: turquoise;
+        text-shadow:black 0.6px 0.7px;
+        border-radius: 10px;
+        box-shadow: black 0.6px 0.7px ;
+        transition: 0.7s;
+    }
+
+}
+@media only screen and (min-width:950px) and (max-width:1250px){
+    #logo,#navbar{
+        display: inline-block;
+    }
+    #logo{
+        position: relative;
+        top:0px;
+        left:10px;
+        margin: 2px 15px;
+    }
+    #links{ 
+        align-items: center;
+        align-content: flex-start;
+        display: flex!important;
+        flex-direction: row;
+        z-index: 2;
+        width: 50%;
+        position: absolute;
+        top: 0.9em;
+        right: 22%;
+    } 
+    .icon{
+        display: none;
+    }
+    #links li a{
+        text-decoration: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1.2em;
+        height: 30px;
+        width: 110px;
+        padding: 3px 3px;
+        margin: 3px 10px;
+        text-align: center;
+        justify-content: center;
+        color: whitesmoke;
+        background-color: turquoise;
+        text-shadow:black 0.6px 0.7px;
+        border-radius: 10px;
+        box-shadow: black 0.6px 0.7px ;
+        transition: 0.7s;
+    }
+
+}
+@media only screen and (min-width:1250px){
+    #logo,#navbar{
+        display: inline-block;
+    }
+    #logo{
+        position: relative;
+        top:0px;
+        left:2%;
+        margin: 2px 15px;
+    }
+    #links{ 
+        align-items: center;
+        align-content: flex-start;
+        display: flex!important;
+        flex-direction: row;
+        z-index: 2;
+        width: 50%;
+        position: absolute;
+        top: 0.9em;
+        right: 8%;
+    } 
+    .icon{
+        display: none;
+    }
+    #links li a{
+        text-decoration: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1.3em;
+        height: 35px;
+        width: 120px;
+        padding: 3px 3px;
+        margin: 3px 10px;
+        text-align: center;
+        justify-content: center;
+        color: whitesmoke;
+        background-color: turquoise;
+        text-shadow:black 0.8px 0.8px;
+        border-radius: 10px;
+        box-shadow: black 0.6px 0.7px ;
+        transition: 0.7s;
+    }
+
+}

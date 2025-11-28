@@ -1,0 +1,151 @@
+{% extends 'base-user.html' %}
+{% block title %}Scan Attendance {% endblock %}
+{% block body %}
+<div class="container justify-content-center my-5 pt-5 mx-auto">
+    <div class="row mt-5 mb-3">
+        <div class="col-8">
+            <h1 class="h1">Scan Attendance:</h1>
+        </div>
+    </div>
+    <div class="row">
+        <button id="start-button" class="col-4 col-lg-1 bg-success badge rounded-pill mx-2 py-2 px-3">Start</button>
+        <button id="stop-button" class="col-4 col-lg-1 bg-danger badge rounded-pill mx-2 py-2 px-3">Stop</button>
+    </div>
+    <div id="video-container" class="row my-2 justify-content-center useless">
+        <video id="qr-video" class="col-10"></video>
+        <button id="cam-list" class="bg-primary badge rounded-pill my-2 py-2 px-3 col-4 col-lg-2">Change</button>
+    </div>
+    <b class="useless">Device has camera: </b>
+    <span id="cam-has-camera" class="useless"></span>
+    <form method="post">
+        {% csrf_token %}
+        <b class="useless">Detected QR code: </b>
+        <span id="cam-qr-result">None</span>
+        <!-- <input type="text" name="result" id="cam-qr-result"></input> -->
+        <b class="useless">Last detected at: </b>
+        <span id="cam-qr-result-timestamp" name="result" class="useless">{{rst}}</span>
+        <button type="submit" class="col-4 col-lg-1 bg-success badge rounded-pill mx-2 py-2 px-3">Done</button>
+    </form>
+
+
+</div>
+{% endblock %}
+
+{% block script %}
+
+<script type="module">
+    import QrScanner from "{% static '/js/qr-scanner.min.js' %}";
+
+    const video = document.getElementById('qr-video');
+    const videoContainer = document.getElementById('video-container');
+    const camHasCamera = document.getElementById('cam-has-camera');
+    const camList = document.getElementById('cam-list');
+    const camQrResult = document.getElementById('cam-qr-result');
+    const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
+    const env = "environment";
+    const usr = "user";
+    var cnt = 0;
+    function setResult(label, result) {
+        console.log(result.data);
+        label.textContent = result.data;
+        camQrResultTimestamp.textContent = new Date().toString();
+        label.style.color = 'teal';
+        clearTimeout(label.highlightTimeout);
+        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+    }
+
+    // ####### Web Cam Scanning #######
+
+    const scanner = new QrScanner(video, result => setResult(camQrResult, result), {
+        onDecodeError: error => {
+            camQrResult.textContent = error;
+            camQrResult.style.color = 'inherit';
+        },
+        highlightScanRegion: true,
+        highlightCodeOutline: true,
+    });
+
+
+    scanner.start().then(() => {
+        // List cameras after the scanner started to avoid listCamera's stream and the scanner's stream being requested
+        // at the same time which can result in listCamera's unconstrained stream also being offered to the scanner.
+        // Note that we can also start the scanner after listCameras, we just have it this way around in the demo to
+        // // start the scanner earlier.
+        // QrScanner.listCameras(true).then(cameras => cameras.forEach(camera => {
+        //     const option = document.createElement('option');
+        //     option.value = camera.id;
+        //     option.text = camera.label;
+        //     camList.add(option);
+        // }));
+    });
+
+    QrScanner.hasCamera().then(hasCamera => camHasCamera.textContent = hasCamera);
+
+    // for debugging
+    window.scanner = scanner;
+
+    camList.addEventListener('click', () => {
+        if (cnt % 2 == 0) {
+            scanner.setCamera(env);
+            cnt += 1;
+        }
+        else {
+            scanner.setCamera(usr);
+            cnt = 2;
+        }
+    });
+
+    document.getElementById('start-button').addEventListener('click', () => {
+        scanner.start();
+        videoContainer.classList.add("show");
+    });
+
+    document.getElementById('stop-button').addEventListener('click', () => {
+        scanner.stop();
+        videoContainer.classList.remove("show");
+    });
+
+    // ####### File Scanning #######
+
+</script>
+{% endblock %}
+{% block css %}
+<style>
+    #video-container {
+        line-height: 0;
+    }
+
+    .useless {
+        display: none;
+    }
+
+    #video-container.example-style-1 .scan-region-highlight-svg,
+    #video-container.example-style-1 .code-outline-highlight {
+        stroke: #64a2f3 !important;
+    }
+
+    #video-container.example-style-2 {
+        width: 80%;
+    }
+
+    #video-container.example-style-2 .scan-region-highlight {
+        border-radius: 30px;
+        outline: rgba(0, 0, 0, .25) solid 50vmax;
+    }
+
+    #video-container.example-style-2 .scan-region-highlight-svg {
+        display: none;
+    }
+
+    #video-container.example-style-2 .code-outline-highlight {
+        stroke: rgba(255, 255, 255, .5) !important;
+        stroke-width: 15 !important;
+        stroke-dasharray: none !important;
+    }
+
+    .show {
+        display: block;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'base-admin.html' %}
+{% block title %}Student Details{% endblock %}
+{% block body %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Student Details</h1>
+    </div>
+
+    <!-- Content Row -->
+    <!-- Page Heading -->
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Student Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div id="dataTable_filter" class="dataTables_filter">
+                                    <label class="d-flex flex-row p-3">Search:<input type="search" name="data"
+                                            class="form-control form-control-sm mx-3" placeholder=""
+                                            aria-controls="dataTable">
+                                        <input type="submit" value="Search" name="search"></label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable no-footer" id="dataTable" width="100%"
+                                cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable"
+                                            rowspan="1" colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="width: 142px;">
+                                            Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Email: activate to sort column ascending"
+                                            style="width: 135px;">Email</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Password: activate to sort column ascending"
+                                            style="width: 209px;">Password</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="std: activate to sort column ascending"
+                                            style="width: 102px;">Std</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Address: activate to sort column ascending"
+                                            style="width: 186px;">Address</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Mobile No: activate to sort column ascending"
+                                            style="width: 213px;">Mobile No</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Update: activate to sort column ascending"
+                                            style="width: 166px;">Update</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Delete: activate to sort column ascending"
+                                            style="width: 163px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in stu %}
+                                    <tr>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <td><input type="hidden" name="item_id" value="{{item.id}}">
+                                                {{ item.s_name }}</td>
+                                            <td>{{ item.s_email }}</td>
+                                            <td>{{ item.s_password }}</td>
+                                            <td>{{ item.s_class }}</td>
+                                            <td>{{ item.s_add }}</td>
+                                            <td>{{ item.s_contact }}</td>
+                                            <td><button type="submit" name="accept">Accept</button></td>
+                                            <td><button type="submit" name="reject">Reject</button></td>
+                                        </form>
+                                    </tr>
+                                    {% empty %}
+                                    <tr class="odd">
+                                        <td colspan="6" class="dataTables_empty">No
+                                            data available in table</td>
+                                    </tr>
+
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+<!-- End of Main Content -->
+
+<!-- Footer -->
+{% endblock %}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To Wings Institute !!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{%static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{%static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static 'img/favicon-16x16.png' %}">
+    <link rel="manifest" href="{%static 'img/site.webmanifest' %}">
+    <link rel="mask-icon" href="{%static 'img/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap" rel="stylesheet">
+    <script src="{%static 'js/script.js' %}"> </script>
+</head> 
+
+<body>
+    <header>
+        <nav id="navbar">
+            <div id="logo">
+                <img src="img/images.jpg" alt="Wings Institute">
+            </div>
+            <div class="icon" onclick="menu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            
+        </nav>
+        <ul id="links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+        </ul>
+
+    </header>
+    <div class="container nospace panel-outer">
+        <div class="sidepanel">
+            <div id="panelprofile" onclick="togglePanel()">
+                click
+            </div>
+            <div class="col panel">
+                <ul>
+                    <li>
+                        Attendance
+                    </li>
+                    <ul>
+                        <li>
+                            Mark
+                        </li>
+                        <li>
+                            View
+                        </li>
+                        <li>
+                            Edit
+                        </li>
+                    </ul>
+                </ul>
+                <ul>
+                    <li>
+                        Exam
+                    </li>
+                    <ul>
+                        <li>
+                            Create Paper
+                        </li>
+                        <li>
+                            Give Exam
+                        </li>
+                        <li>
+                            view Result
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        <iframe id="frame" src="/SetPaper.html" frameborder="0"></iframe>
+    </div>
+    <footer>
+        <p>All rights reserved.</p>
+        <div class="connect">
+            <p>Connect us on : </p>
+            <a href="https://www.facebook.com/Wingsinstitute2011/" target="_blank"><img src="img/facebook.png"
+                    alt="facebook"></a>
+            <a href="https://www.youtube.com/channel/UCEYfXyAjqRok8N_cbE-Kzrg"><img src="img/youtube.png"
+                    alt="youtube"></a>
+            <a href="https://play.google.com/store/apps/details?id=co.thanos.olkdr&hl=en"><img src="img/google_play.png"
+                    alt="App"></a>
+            <a href="http://t.me/wingsInstitutegm"><img src="img/telegram.png" alt="telegram"></a>
+        </div>
+    </footer>
+</body>
+</html>

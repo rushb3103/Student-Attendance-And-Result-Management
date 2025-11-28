@@ -1,0 +1,50 @@
+{% extends 'base-user.html' %}
+{% block title %}Attend Exam{% endblock %}
+{% block body %}
+<div class="container justify-content-center text-center border border-2 rounded mt-5 pt-5">
+    <!-- Content here -->
+    <h3 class="text-muted h1">
+        {{ exams.ex_title }}
+    </h3>
+    <hr>
+    <form method="post" class="my-5">{% csrf_token %}
+        {% for q in que %}
+        <div class="mb-3 row justify-content-center text-center">
+            
+            <label class="form-label col-10 mb-4 mx-3"><strong class="h4">Question. {{ forloop.counter }}</strong></label>
+            <div class="form-label col-12 mb-3  mx-5">
+                <input type="hidden" name="qid{{ forloop.counter }}" value="{{q.id}}"></input> 
+                {{ q.que }}</div>
+            <div class="col-8 col-lg-4 mx-5 form-check">
+                <input type="radio" name="op{{ forloop.counter }}" id="opA{{ forloop.counter }}" value="A" class="form-check-input mx-3" required>
+                <label for="opA{{ forloop.counter }}">
+                    {{ q.opA }}
+                </label>
+            </div>
+            <div class="col-8 col-lg-4 mx-5 form-check">
+                <input type="radio" name="op{{ forloop.counter }}" id="opB{{ forloop.counter }}" value="B" class="form-check-input mx-3" required>
+                <label for="opB{{ forloop.counter }}">
+                    {{ q.opB }}
+                </label>
+            </div>
+            <div class="col-8 col-lg-4 mx-5 form-check">
+                <input type="radio" name="op{{ forloop.counter }}" id="opC{{ forloop.counter }}" value="C" class="form-check-input mx-3" required>
+                <label for="opC{{ forloop.counter }}">
+                    {{ q.opC }}
+                </label>
+            </div>
+            <div class="col-8 col-lg-4 mx-5 form-check">
+                <input type="radio" name="op{{ forloop.counter }}" id="opD{{ forloop.counter }}" value="D" class="form-check-input mx-3" required>
+                <label for="opD{{ forloop.counter }}">
+                    {{ q.opD }}
+                </label>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-success px-5">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

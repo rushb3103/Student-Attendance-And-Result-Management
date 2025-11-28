@@ -1,0 +1,42 @@
+{% extends 'base-user.html' %}
+{% block title %}View Attendance{% endblock %}
+{% block body %}
+<div class="container mx-auto my-3 pt-5">
+    <!-- <button type="button" class="btn btn-primary btn-lg px-5 bg-success">Print</button> -->
+    <div class="container my-2">
+        <div class="border border-2 rounded m-5 mx-auto border-secondary" id="piechart"
+            style="width: 70%; height: 500px;">
+        </div>
+        <div class="mx-auto row">
+            <button type="button" class="col-3 btn btn-primary btn-lg px-5 mx-auto bg-success">Print</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Present',     11],
+      ['Absent',      4],
+      ['Leave',  2],
+    ]);
+
+    var options = {
+      title: 'Attendance Report'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+{% endblock %}

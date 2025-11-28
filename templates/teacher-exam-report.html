@@ -1,0 +1,39 @@
+{% extends 'base-teacher.html' %}
+{% block title %}Exam Report{% endblock %}
+{% block script %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['bar'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Subject', 'January', 'February', 'March'],
+            ['Science', 50, 55, 40],
+            ['Maths', 70, 55, 65],
+            ['English', 60, 52, 74],
+            ['Gujarati', 70, 67, 54]
+        ]);
+
+        var options = {
+            chart: {
+                title: 'Exam Report',
+                subtitle: 'Subject: Science,Maths,English,Gujarati',
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+</script>
+{% endblock %}
+{% block body %}
+<div class="container mx-auto">
+    <div class="border border-2 rounded m-5 border-secondary p-4" id="columnchart_material"
+        style="width: 800px; height: 500px;">
+
+    </div>
+    <button type="button" class="btn btn-primary btn-lg px-5 mx-auto bg-success">Print</button>
+</div>
+{% endblock %}
